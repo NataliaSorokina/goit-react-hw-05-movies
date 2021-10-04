@@ -1,10 +1,26 @@
-export default function SearchMoviesByName({
-  onFormSubmit,
-  searchQuery,
-  onSearchQuery,
-}) {
+import { useState } from 'react';
+
+export default function SearchMoviesByName({ onFormSubmit }) {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchQuery = event => {
+    console.log(event.currentTarget.value);
+    setSearchQuery(event.currentTarget.value.toLowerCase());
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    if (searchQuery.trim() === '') {
+      // toast.error('Enter search query!');
+      return;
+    }
+    onFormSubmit(searchQuery);
+    setSearchQuery('');
+  };
+
   return (
-    <form onSubmit={onFormSubmit}>
+    <form onSubmit={handleSubmit}>
       <button type="submit">
         <span>Search</span>
       </button>
@@ -15,7 +31,7 @@ export default function SearchMoviesByName({
         autoFocus
         placeholder="Search movies"
         value={searchQuery}
-        onChange={onSearchQuery}
+        onChange={handleSearchQuery}
       />
     </form>
   );

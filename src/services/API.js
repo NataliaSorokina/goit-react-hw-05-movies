@@ -17,3 +17,42 @@ export const fetchMoviesByQuery = async (searchQuery, page) => {
     })
     .then(response => response.data);
 };
+
+// export const fetchMoviesByID = async (movie_id) => {
+//   return await axios
+//     .get('movie&append_to_response=movie_id,credits,reviews'/* , {
+//       params: { movie_id },
+//     } */)
+//     .then(response => response.data);
+// };
+
+export const fetchMoviesByID = async movie_id => {
+  return await axios
+    .get('movie', {
+      params: { movie_id },
+    })
+    .then(response => response.data);
+};
+
+// Movie by ID
+// https://api.themoviedb.org/3/movie/{movie_id}?api_key=22624965-297697bc75a5089bebc4e5f11&language=en-US
+
+export const fetchMovieCast = async (movie_id, credits) => {
+  return await axios
+    .get('movie', {
+      params: { movie_id, credits },
+    })
+    .then(response => response.data);
+};
+// Credits (Cast)
+// https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=22624965-297697bc75a5089bebc4e5f11&language=en-US
+
+export const fetchMovieReviews = async (movie_id, reviews) => {
+  return await axios
+    .get('movie', {
+      params: { movie_id, reviews },
+    })
+    .then(response => response.data);
+};
+// Reviews
+// https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=22624965-297697bc75a5089bebc4e5f11&language=en-US&page=1

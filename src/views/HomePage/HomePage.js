@@ -9,8 +9,10 @@ function HomePage() {
     async function getPopularMovies() {
       try {
         const data = await fetchPopularMovies();
+        console.log(data);
         const [results] = data;
         setPopularMovie([...results]);
+        console.log(popularMovies);
       } catch (error) {
         console.log(error);
       }

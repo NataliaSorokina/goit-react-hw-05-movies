@@ -9,26 +9,10 @@ function MoviesPage() {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState([]);
 
-  const handleSearchQuery = event => {
-    console.log(event.currentTarget.value);
-    setSearchQuery(event.currentTarget.value.toLowerCase());
-  };
-
   const handleFormSubmit = searchQuery => {
     setSearchQuery(searchQuery);
     setPage(1);
     setMovies([]);
-  };
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    if (event.currentTarget.value.trim() === '') {
-      // toast.error('Enter search query!');
-      return;
-    }
-    handleFormSubmit(searchQuery);
-    setSearchQuery('');
   };
 
   useEffect(() => {
@@ -37,7 +21,8 @@ function MoviesPage() {
         if (searchQuery.trim() === '') {
           return;
         }
-        const results = await fetchMoviesByQuery(searchQuery, page);
+        const data = await fetchMoviesByQuery(searchQuery, page);
+        const { results } = data;
         if (results.length === 0) {
           /* toast.error */ alert(
             `Sorry, there are no movies matching your search query '${searchQuery}'. Please try again.`,
@@ -58,11 +43,7 @@ function MoviesPage() {
 
   return (
     <>
-      <SearchMovies
-        onFormSubmit={handleSubmit}
-        searchQuery={searchQuery}
-        onSearchQuery={handleSearchQuery}
-      />
+      <SearchMovies onFormSubmit={handleFormSubmit} />
     </>
   );
 }
