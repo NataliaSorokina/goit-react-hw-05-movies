@@ -1,9 +1,9 @@
 import { Switch, Route } from 'react-router';
-import HomePage from './views/HomePage';
-import MoviesPage from './views/MoviesPage';
-import MovieDetailsPage from './views/MovieDetailsPage';
-import Cast from './views/Cast';
-import Reviews from './views/Reviews';
+import HomePage from './views/HomePage/HomePage';
+import MoviesPage from './views/MoviesPage/MoviesPage';
+import MovieDetailsPage from './views/MovieDetailsPage/MovieDetailsPage';
+import Cast from './views/Cast/Cast';
+import Reviews from './views/Reviews/Reviews';
 import NotFoundView from 'views/NotFoundViews';
 import './App.css';
 import Container from 'components/Container/Container';
