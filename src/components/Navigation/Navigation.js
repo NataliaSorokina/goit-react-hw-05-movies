@@ -11,8 +11,8 @@ const Navigation = () => (
       MoviesPage{' '}
     </NavLink>
     <NavLink exact to="/movies/:movieId" className="" activeClassName="">
-      {' '}
-      MovieDetailsPage{' '}
+      {/* {' '}
+      MovieDetailsPage{' '} */}
     </NavLink>
     <NavLink exact to="/movies/:movieId/cast" className="" activeClassName="">
       {' '}
