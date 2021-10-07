@@ -1,15 +1,13 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-// import PageHeading from 'components/PageHeading/PageHeading';
 import { fetchMovieByID } from '../../services/API';
-// import { Link } from 'react-router-dom';
 
 export default function Cast() {
   const { movieId } = useParams();
   const [movieCast, setMovieCast] = useState([]);
 
   useEffect(() => {
-    async function getMovieCast(movieId) {
+    async function getMovieCast() {
       try {
         const data = await fetchMovieByID(movieId);
         const { cast } = data.credits;
@@ -22,7 +20,7 @@ export default function Cast() {
         console.log(movieId);
       }
     }
-    getMovieCast();
+    getMovieCast(movieId);
     console.log(movieCast);
   }, [movieId]);
 
@@ -31,7 +29,7 @@ export default function Cast() {
       {movieCast && (
         <ul>
           {movieCast.map(actor => (
-            <li /* key={movie.id} */>
+            <li key={actor.cast_id}>
               <img
                 src={`https://image.tmdb.org/t/p/w300${actor.profile_path}`}
                 alt={actor.name}
