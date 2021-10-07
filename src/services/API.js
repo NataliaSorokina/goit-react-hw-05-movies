@@ -20,7 +20,7 @@ export const fetchMoviesByQuery = async (searchQuery, page) => {
 
 export const fetchMovieByID = async movie_id => {
   return await axios
-    .get(`movie/${movie_id}&append_to_response=credits,reviews`)
+    .get(`movie/${movie_id}?append_to_response=credits,reviews`)
     .then(response => response.data);
 };
 
@@ -33,21 +33,17 @@ export const fetchMovieByID = async movie_id => {
 // Movie by ID
 // https://api.themoviedb.org/3/movie/{movie_id}?api_key=22624965-297697bc75a5089bebc4e5f11&language=en-US
 
-// export const fetchMovieCast = async (movie_id, credits) => {
+// export const fetchMovieCast = async (movie_id) => {
 //   return await axios
-//     .get('movie', {
-//       params: { movie_id, credits },
-//     })
+//     .get(`movie/${movie_id}/credits`)
 //     .then(response => response.data);
 // };
 // Credits (Cast)
 // https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=22624965-297697bc75a5089bebc4e5f11&language=en-US
 
-// export const fetchMovieReviews = async (movie_id, reviews) => {
+// export const fetchMovieReviews = async (movie_id) => {
 //   return await axios
-//     .get('movie', {
-//       params: { movie_id, reviews },
-//     })
+//     .get(`movie/${movie_id}/reviews`)
 //     .then(response => response.data);
 // };
 // Reviews

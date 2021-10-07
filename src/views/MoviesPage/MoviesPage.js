@@ -48,7 +48,7 @@ function MoviesPage() {
   return (
     <>
       <SearchMovies onFormSubmit={handleFormSubmit} />
-      {/* <PageHeading text="Movies" /> */}
+
       {movies && (
         <ul>
           {movies.map(movie => (

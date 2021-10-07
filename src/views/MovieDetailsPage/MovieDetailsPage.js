@@ -1,9 +1,13 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import PageHeading from 'components/PageHeading/PageHeading';
+import { Route, useParams, NavLink, useRouteMatch } from 'react-router-dom';
+// import PageHeading from 'components/PageHeading/PageHeading';
 import { fetchMovieByID } from '../../services/API';
+import Cast from '../Cast/Cast';
+import Reviews from '../Reviews/Reviews';
 
 function MovieDetailsPage() {
+  const { url, path } = useRouteMatch();
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
@@ -26,6 +30,7 @@ function MovieDetailsPage() {
     <>
       {movie && (
         <>
+          <hr />
           <img
             src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
             alt={movie.title}
@@ -42,9 +47,26 @@ function MovieDetailsPage() {
           <p>{movie.overview}</p>
           <h4>Genres</h4>
           <p>{movie.genres.map(genre => genre.name).join(', ')}</p>
+          <hr />
           <h5>Additional information</h5>
+          <ul>
+            <li key={movie.id}>
+              <NavLink to={`${url}/cast`}>Cast</NavLink>
+            </li>
+            <li /* key={movie.id} */>
+              <NavLink to={`${url}/reviews`}>Reviews</NavLink>
+            </li>
+          </ul>
         </>
       )}
+      <hr />
+
+      <Route path={`${path}/:cast`}>
+        {movie && <Cast movieId={movieId} />}
+      </Route>
+      <Route path="/movies/:movieId/reviews">
+        <Reviews movieId={movieId} />
+      </Route>
     </>
   );
 }

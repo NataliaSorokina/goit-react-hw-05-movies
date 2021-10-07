@@ -4,17 +4,17 @@ const Navigation = () => (
   <nav>
     <NavLink exact to="/" className="" activeClassName="">
       {' '}
-      HomePage{' '}
+      Home{' '}
     </NavLink>
     <NavLink exact to="/movies" className="" activeClassName="">
       {' '}
-      MoviesPage{' '}
+      Movies{' '}
     </NavLink>
-    <NavLink exact to="/movies/:movieId" className="" activeClassName="">
-      {/* {' '}
+    {/* <NavLink exact to="/movies/:movieId" className="" activeClassName=""> */}
+    {/* {' '}
       MovieDetailsPage{' '} */}
-    </NavLink>
-    <NavLink exact to="/movies/:movieId/cast" className="" activeClassName="">
+    {/* </NavLink> */}
+    {/* <NavLink exact to="/movies/:movieId/cast" className="" activeClassName="">
       {' '}
       Cast{' '}
     </NavLink>
@@ -26,7 +26,7 @@ const Navigation = () => (
     >
       {' '}
       Reviews
-    </NavLink>
+    </NavLink> */}
   </nav>
 );
 
