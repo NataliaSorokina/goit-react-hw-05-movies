@@ -14,6 +14,8 @@ function MovieDetailsPage() {
     async function getMovieByID(movieId) {
       try {
         await fetchMovieByID(movieId).then(result => setMovie(result));
+        // console.log(movieId);
+        // console.log(movie);
       } catch (error) {
         /* toast.error */ alert(
           'Error. We are sorry, but something went wrong.',
@@ -22,8 +24,8 @@ function MovieDetailsPage() {
       }
     }
     getMovieByID(movieId);
-    console.log(movieId);
-    console.log(movie);
+    // console.log(movieId);
+    // console.log(movie);
   }, [movieId]);
 
   return (
@@ -53,13 +55,13 @@ function MovieDetailsPage() {
             <li key={movie.cast}>
               <Link to={`${url}/cast`}>Cast</Link>
               <Route path={`${path}/cast`}>
-                <Cast movieId={movieId} />
+                <Cast credits={movie.credits} />
               </Route>
             </li>
             <li key={movie.reviews}>
               <Link to={`${url}/reviews`}>Reviews</Link>
               <Route path={`${path}/reviews`}>
-                <Reviews movieId={movieId} />
+                <Reviews reviews={movie.reviews} />
               </Route>
             </li>
           </ul>
