@@ -1,22 +1,23 @@
 import { useState } from 'react';
+import { toast } from 'react-toastify';
 
 export default function SearchMoviesByName({ onFormSubmit }) {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [value, setValue] = useState('');
 
   const handleSearchQuery = event => {
-    console.log(event.currentTarget.value);
-    setSearchQuery(event.currentTarget.value.toLowerCase());
+    console.log(event.target.value);
+    setValue(event.target.value.toLowerCase());
   };
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    if (searchQuery.trim() === '') {
-      // toast.error('Enter search query!');
+    if (value.trim() === '') {
+      toast.error('Enter search query!');
       return;
     }
-    onFormSubmit(searchQuery);
-    setSearchQuery('');
+    onFormSubmit(value);
+    setValue('');
   };
 
   return (
@@ -30,7 +31,7 @@ export default function SearchMoviesByName({ onFormSubmit }) {
         autoComplete="off"
         autoFocus
         placeholder="Search movies"
-        value={searchQuery}
+        value={value}
         onChange={handleSearchQuery}
       />
     </form>

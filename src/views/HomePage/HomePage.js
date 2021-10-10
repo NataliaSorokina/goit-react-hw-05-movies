@@ -1,39 +1,35 @@
 import { useState, useEffect } from 'react';
-import { Link /* , useRouteMatch */ } from 'react-router-dom';
-// import PageHeading from 'components/PageHeading/PageHeading';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+import PageHeading from 'components/PageHeading/PageHeading';
 import { fetchPopularMovies } from '../../services/API';
+import MovieList from '../MoviesList/MoviesList';
+import Loader from 'components/Loader/Loader';
 
 function HomePage() {
-  // const { url } = useRouteMatch();
+  const [trendStatus, setTrendStatus] = useState('idle');
   const [popularMovies, setPopularMovies] = useState([]);
 
   useEffect(() => {
-    async function getPopularMovies() {
-      try {
-        const data = await fetchPopularMovies();
-        console.log(data);
-        const { results } = data;
-        setPopularMovies(results);
-      } catch (error) {
+    setTrendStatus('pending');
+    fetchPopularMovies()
+      .then(data => {
+        setTrendStatus('resolved');
+        setPopularMovies(data.results);
+      })
+      .catch(error => {
+        setTrendStatus('rejected');
+        toast.error('Error. We are sorry, but something went wrong.');
         console.log(error);
-      }
-    }
-    getPopularMovies();
+      });
   }, []);
 
   return (
     <>
-      {/* <PageHeading text="Home" /> */}
-
-      {popularMovies && (
-        <ul>
-          {popularMovies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      <PageHeading text="Trending today" />
+      {trendStatus === 'pending' && <Loader />}
+      {popularMovies && <MovieList movies={popularMovies} />}
+      <ToastContainer autoClose={3000} />
     </>
   );
 }

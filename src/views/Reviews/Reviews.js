@@ -1,11 +1,9 @@
 export default function Reviews({ reviews }) {
   const { results } = reviews;
-  // console.log(reviews);
-  // console.log(results);
 
   return (
     <>
-      {results && (
+      {results && results.length ? (
         <ul>
           {results.map(review => (
             <li key={review.id}>
@@ -14,6 +12,8 @@ export default function Reviews({ reviews }) {
             </li>
           ))}
         </ul>
+      ) : (
+        <p>No reviews</p>
       )}
     </>
   );

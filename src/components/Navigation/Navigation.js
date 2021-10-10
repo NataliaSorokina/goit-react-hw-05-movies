@@ -1,15 +1,15 @@
-import { NavLink } from 'react-router-dom';
+import { NavigLink } from 'components/Navigation/Navigation.styled';
 
 const Navigation = () => (
   <nav>
-    <NavLink exact to="/" className="" activeClassName="">
+    <NavigLink exact to="/">
       {' '}
       Home{' '}
-    </NavLink>
-    <NavLink exact to="/movies" className="" activeClassName="">
+    </NavigLink>
+    <NavigLink exact to="/movies">
       {' '}
       Movies{' '}
-    </NavLink>
+    </NavigLink>
   </nav>
 );
 

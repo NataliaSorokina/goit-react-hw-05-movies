@@ -1,9 +1,10 @@
+import { Header } from './AppBar.styled';
 import Navigation from 'components/Navigation/Navigation';
 
 export default function AppBar() {
   return (
-    <header>
+    <Header>
       <Navigation />
-    </header>
+    </Header>
   );
 }
