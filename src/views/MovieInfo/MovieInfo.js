@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { /* Link,  */ Route, useRouteMatch } from 'react-router-dom';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import Loader from 'components/Loader/Loader';
 import {
   Card,
@@ -78,12 +78,14 @@ const MovieInfo = ({ movie, moviesLocation }) => {
         </MovieCard>
       </Card>
       <Suspense fallback={<Loader />}>
-        <Route path={`${path}/cast`}>
-          <Cast credits={movie.credits} />
-        </Route>
-        <Route path={`${path}/reviews`}>
-          <Reviews reviews={movie.reviews} />
-        </Route>
+        <Switch>
+          <Route path={`${path}/cast`}>
+            <Cast credits={movie.credits} />
+          </Route>
+          <Route path={`${path}/reviews`}>
+            <Reviews reviews={movie.reviews} />
+          </Route>
+        </Switch>
       </Suspense>
     </>
   );
