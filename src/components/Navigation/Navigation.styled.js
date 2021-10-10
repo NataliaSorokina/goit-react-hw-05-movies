@@ -7,11 +7,11 @@ export const NavigLink = styled(NavLink)`
   font-weight: 600;
   font-size: 24px;
   text-decoration: none;
-  color: honeydew;
+  color: dodgerblue;
   &:not(:last-child) {
     margin-right: 250px;
   }
   &.active {
-    color: gainsboro;
+    color: honeydew;
   }
 `;

@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 
-export const LoadButton = styled.button`
+export const Btn = styled.button`
   display: block;
   min-width: 180px;
-  margin: 5px auto;
+  margin: 20px auto;
   padding: 8px 16px;
   border: 0;
   border-radius: 5px;

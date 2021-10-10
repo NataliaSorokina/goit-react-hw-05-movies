@@ -18,7 +18,6 @@ function MoviesPage() {
   const [total_pages, setTotal_pages] = useState(0);
 
   const changeQuery = new URLSearchParams(location.search).get('query');
-  // console.log('changeQuery:', changeQuery);
 
   const handleFormSubmit = value => {
     setSearchQuery(value);
@@ -31,12 +30,12 @@ function MoviesPage() {
     setPage(prevState => prevState + 1);
   };
 
-  const handleScroll = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: 'smooth',
-    });
-  };
+  // const handleScroll = () => {
+  //   window.scrollTo({
+  //     top: document.documentElement.scrollHeight,
+  //     behavior: 'smooth',
+  //   });
+  // };
 
   useEffect(() => {
     if (!changeQuery) {
@@ -59,8 +58,8 @@ function MoviesPage() {
             return (
               setSearchStatus('resolved'),
               setMovies(prevState => [...prevState, ...data.results]),
-              setTotal_pages(data.total_pages),
-              handleScroll()
+              setTotal_pages(data.total_pages)
+              // handleScroll()
             );
           }
         })

@@ -1,19 +1,31 @@
+import {
+  List,
+  ListItem,
+  Title,
+  MinorTitle,
+  Desc,
+  Span,
+} from './Reviews.styled';
+
 export default function Reviews({ reviews }) {
   const { results } = reviews;
 
   return (
     <>
       {results && results.length ? (
-        <ul>
+        <List>
           {results.map(review => (
-            <li key={review.id}>
-              <p>Author: {review.author}</p>
-              <p>{review.content}</p>
-            </li>
+            <ListItem key={review.id}>
+              <Title>
+                <Span>Author: </Span>
+                {review.author}
+              </Title>
+              <Desc>{review.content}</Desc>
+            </ListItem>
           ))}
-        </ul>
+        </List>
       ) : (
-        <p>No reviews</p>
+        <MinorTitle>No reviews</MinorTitle>
       )}
     </>
   );

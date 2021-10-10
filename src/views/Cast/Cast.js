@@ -1,3 +1,5 @@
+import { List, ListImg, Desc, Title, Span } from './Cast.styled';
+import { ListItem } from '../MoviesList/MoviesList.styled';
 import default_image_cast_4 from '../../images/default_image_cast_4.jpg';
 
 export default function Cast({ credits }) {
@@ -6,10 +8,10 @@ export default function Cast({ credits }) {
   return (
     <>
       {cast && cast.length ? (
-        <ul>
+        <List>
           {cast.map(actor => (
-            <li key={actor.cast_id}>
-              <img
+            <ListItem key={actor.cast_id}>
+              <ListImg
                 src={
                   actor.profile_path
                     ? `https://image.tmdb.org/t/p/w300${actor.profile_path}`
@@ -17,13 +19,16 @@ export default function Cast({ credits }) {
                 }
                 alt={actor.name}
               />
-              <p>{actor.name}</p>
-              <p>Character: {actor.character ? actor.character : 'no data'}</p>
-            </li>
+              <Title>{actor.name}</Title>
+              <Desc>
+                <Span>Character: </Span>
+                {actor.character ? actor.character : 'no data'}
+              </Desc>
+            </ListItem>
           ))}
-        </ul>
+        </List>
       ) : (
-        <p>No cast information</p>
+        <Title>No cast information</Title>
       )}
     </>
   );

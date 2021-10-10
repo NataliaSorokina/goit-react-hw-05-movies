@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { Form, SearchBtn, Input } from './SearchMovies.styled';
 
 export default function SearchMoviesByName({ onFormSubmit }) {
   const [value, setValue] = useState('');
 
   const handleSearchQuery = event => {
-    console.log(event.target.value);
     setValue(event.target.value.toLowerCase());
   };
 
@@ -21,12 +21,12 @@ export default function SearchMoviesByName({ onFormSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <button type="submit">
+    <Form onSubmit={handleSubmit}>
+      <SearchBtn type="submit">
         <span>Search</span>
-      </button>
+      </SearchBtn>
 
-      <input
+      <Input
         type="text"
         autoComplete="off"
         autoFocus
@@ -34,6 +34,6 @@ export default function SearchMoviesByName({ onFormSubmit }) {
         value={value}
         onChange={handleSearchQuery}
       />
-    </form>
+    </Form>
   );
 }

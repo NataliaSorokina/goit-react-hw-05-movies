@@ -4,6 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { fetchMovieByID } from '../../services/API';
 import MovieInfo from '../MovieInfo/MovieInfo';
+import { Btn } from 'components/Button/Button.styled';
 
 function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -26,9 +27,9 @@ function MovieDetailsPage() {
 
   return (
     <>
-      <button type="button" onClick={onGoBack}>
+      <Btn type="button" onClick={onGoBack}>
         Go back
-      </button>
+      </Btn>
       {movie && (
         <MovieInfo movie={movie} moviesLocation={location?.state?.from} />
       )}

@@ -1,3 +1,5 @@
+import { MainTitle } from './PageHeading.styled';
+
 export default function PageHeading({ text }) {
-  return <h1>{text}</h1>;
+  return <MainTitle>{text}</MainTitle>;
 }
